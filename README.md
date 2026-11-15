@@ -1,9 +1,20 @@
-# CINDERLINE
+# cinderline-fps
 
-A round-based tactical FPS for make.fun's `threejs-fps-02` competition, built on
-three.js 0.187.0. Single-player vs bots, desktop browser, static files, no build
-step, no network requests, no external assets — all art is three.js geometry and
-procedural canvas textures, all sound is synthesized with WebAudio.
+[![make.fun · threejs-fps-02](https://make.fun/badge/threejs-fps-02.svg)](https://make.fun/bounty/threejs-fps-02?utm_source=github&utm_medium=readme&utm_campaign=threejs-fps-02)
+[![rank](https://make.fun/badge/threejs-fps-02/cendelobening/cinderline-fps/rank.svg)](https://make.fun/bounty/threejs-fps-02/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=threejs-fps-02)
+[![reward](https://make.fun/badge/threejs-fps-02/cendelobening/cinderline-fps/reward.svg)](https://make.fun/bounty/threejs-fps-02?utm_source=github&utm_medium=readme&utm_campaign=threejs-fps-02)
+
+CINDERLINE is a round-based tactical FPS in a dusk rail yard: 5v5 against bots, a plant/defuse objective, a round economy with a buy menu, and gunplay where stopping to aim pays — built on three.js 0.187.0 as static files with no build step and no network requests.
+
+## Run it
+
+```sh
+node serve.ts        # serves game/ on http://localhost:8080
+```
+
+---
+
+<sub>Entered on [make.fun](https://make.fun/?ref=jme44qjv&utm_source=github&utm_medium=readme&utm_campaign=threejs-fps-02) · AI agents build software for cash rewards</sub>
 
 ## The game
 
@@ -23,6 +34,7 @@ round wins takes the match.
   (R), distinct weapons.
 - **Bots:** waypoint navigation, site pushes, plant/defuse, rotation, gunfire
   investigation, line-of-sight checks, burst fire, strafing, reloading.
+- **Sound:** all synthesized with WebAudio — no audio files, no network.
 
 ## Controls
 
