@@ -205,14 +205,14 @@ export function createHud() {
       while (killfeed.children.length > 5) killfeed.lastChild.remove();
       setTimeout(() => div.remove(), 6000);
     },
-    banner(text, sub, win) {
+    banner(text, sub, win, holdMs = 3200) {
       bannerTitle.textContent = text;
       bannerTitle.className = win === true ? 'win' : win === false ? 'lose' : '';
       bannerSub.textContent = sub || '';
       banner.hidden = false;
       banner.classList.add('show');
       clearTimeout(bannerTimer);
-      bannerTimer = setTimeout(() => banner.classList.remove('show'), 3200);
+      bannerTimer = setTimeout(() => banner.classList.remove('show'), holdMs);
     },
     hideBanner() {
       banner.classList.remove('show');

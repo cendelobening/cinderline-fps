@@ -43,18 +43,19 @@ export function createWeaponView(camera) {
   const sight = new THREE.Mesh(new THREE.BoxGeometry(0.03, 0.06, 0.12), accent);
   sight.position.set(0, 0.08, -0.05);
   model.add(receiver, barrel, stock, sight);
-  model.position.set(0.24, -0.2, -0.42);
+  model.position.set(0.22, -0.23, -0.55);
+  model.scale.setScalar(0.7);
   camera.add(model);
 
   const flash = new THREE.Mesh(
-    new THREE.PlaneGeometry(0.26, 0.26),
+    new THREE.PlaneGeometry(0.18, 0.18),
     new THREE.MeshBasicMaterial({ color: new THREE.Color(PALETTE.lamp), transparent: true, opacity: 0.9, depthWrite: false, side: THREE.DoubleSide }),
   );
-  flash.position.set(0.24, -0.18, -0.95);
+  flash.position.set(0.22, -0.2, -1.0);
   flash.visible = false;
   camera.add(flash);
   const flashLight = new THREE.PointLight(new THREE.Color(PALETTE.lamp), 0, 6);
-  flashLight.position.set(0.24, -0.16, -0.6);
+  flashLight.position.set(0.22, -0.18, -0.7);
   camera.add(flashLight);
 
   const state = { def: WEAPONS.p9, mag: WEAPONS.p9.mag, reserve: WEAPONS.p9.reserve, cooldown: 0, reloadLeft: 0, flash: 0, kick: 0, bloom: 0 };
@@ -64,9 +65,9 @@ export function createWeaponView(camera) {
     state.flash = Math.max(0, state.flash - dt);
     state.kick += (0 - state.kick) * Math.min(1, dt * 14);
     state.bloom = Math.max(0, state.bloom - dt * 0.09);
-    const aimZ = aiming ? -0.52 : -0.42;
-    const aimX = aiming ? 0.0 : 0.24;
-    const aimY = aiming ? -0.155 : -0.2;
+    const aimZ = aiming ? -0.62 : -0.55;
+    const aimX = aiming ? 0.0 : 0.22;
+    const aimY = aiming ? -0.185 : -0.23;
     model.position.x += (aimX - model.position.x) * Math.min(1, dt * 16);
     model.position.y += (aimY - model.position.y) * Math.min(1, dt * 16);
     model.position.z = aimZ + state.kick;

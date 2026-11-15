@@ -87,6 +87,8 @@ const S = {
   prevFiring: false,
 };
 window.__game = S;
+S.bots = bots.bots;
+S.rounds = rounds.state;
 
 const body = player.state;
 const bomb = rounds.state.bomb;
@@ -604,6 +606,11 @@ function syncHud() {
 
 function autoplayStep(dt) {
   // Scripted demo: aim at the nearest visible enemy and fire; walk forward.
+  // Only shoots during the live phase, like a real player.
+  if (rounds.state.phase !== 'live') {
+    input.state.keys.add('KeyW');
+    return;
+  }
   S.autoplayAim -= dt;
   let best = null;
   let bestD = Infinity;
@@ -617,6 +624,7 @@ function autoplayStep(dt) {
   }
   if (best && S.autoplayAim <= 0) {
     S.autoplayAim = 0.25;
+    if (weaponView.state.mag === 0) weaponView.reload();
     tmpVec.set(best.position.x, best.position.y + 1.2, best.position.z);
     const dx = tmpVec.x - body.position.x;
     const dy = tmpVec.y - (body.position.y + body.eye);
@@ -773,7 +781,7 @@ function runShot(name) {
     // Kill one Warden on camera for the killfeed and a red hitmarker.
     aimAt(new THREE.Vector3(defs[0].position.x, 1.2, defs[0].position.z));
     bots.damage(defs[0], 200, 'You', true, onBotKill);
-    hud.hitMarker(true, 4000);
+    hud.hitMarker(true, 60000);
     settle(4);
     aimAt(new THREE.Vector3(defs[1].position.x, 1.2, defs[1].position.z));
     shootPlayer();
@@ -796,7 +804,7 @@ function runShot(name) {
     fx.addSmoke(new THREE.Vector3(23, 0, -15), 12);
     settle(6);
     aimAt(new THREE.Vector3(23, 1.5, -15));
-    hud.banner('ROUND WON', 'Vanguards 3 — 1 Wardens · Enemy team eliminated', true);
+    hud.banner('ROUND WON', 'Vanguards 3 — 1 Wardens · Enemy team eliminated', true, 60000);
   }
   syncHud();
   paintTwiceThenReady();

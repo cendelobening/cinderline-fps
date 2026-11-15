@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:,">
 <title>CINDERLINE — a round-based tactical FPS</title>
 <style>
   /* Look plan: canvas, surface, hairline, ink, muted and one rust-orange accent. */
@@ -95,7 +96,7 @@
 
   .overlay { position: fixed; inset: 0; display: grid; place-items: center; padding: 24px; background: color-mix(in srgb, var(--canvas) 88%, transparent); z-index: 10; }
   .overlay[hidden] { display: none; }
-  .panel { width: min(460px, 100%); padding: 32px; background: var(--surface); border: 1px solid var(--hairline); border-radius: var(--radius-panel); }
+  .panel { width: min(520px, 100%); padding: 32px; background: var(--surface); border: 1px solid var(--hairline); border-radius: var(--radius-panel); }
   .panel h1 { margin: 0 0 8px; font-size: 32px; line-height: 1.15; font-weight: 600; letter-spacing: -0.02em; }
   .panel h1 .accent { color: var(--accent); }
   .panel p { margin: 0 0 20px; font-size: 15px; line-height: 1.5; color: var(--muted); }
@@ -104,7 +105,7 @@
   .btn:hover { background: var(--ink); border-color: var(--ink); }
   .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   .keys { margin: 20px 0 0; padding: 0; list-style: none; display: grid; gap: 7px; font-size: 13px; color: var(--muted); }
-  .keys li { display: flex; align-items: center; gap: 8px; }
+  .keys li { display: flex; align-items: center; gap: 8px; white-space: nowrap; }
   .keys kbd { min-width: 24px; padding: 2px 6px; border: 1px solid var(--hairline); border-radius: var(--radius-panel); font-family: var(--font-readout); font-size: 12px; color: var(--ink); text-align: center; }
 
   #buy-menu { position: fixed; inset: 0; display: grid; place-items: center; background: color-mix(in srgb, var(--canvas) 82%, transparent); z-index: 9; pointer-events: auto; }
@@ -172,8 +173,8 @@
     <button id="play" class="btn" type="button">Click to play</button>
     <ul class="keys">
       <li><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> Move &nbsp;·&nbsp; <kbd>Mouse</kbd> Look &nbsp;·&nbsp; <kbd>Click</kbd> Fire</li>
-      <li><kbd>R</kbd> Reload &nbsp;·&nbsp; <kbd>Right click</kbd> Aim &nbsp;·&nbsp; <kbd>Shift</kbd> Walk slow &nbsp;·&nbsp; <kbd>Ctrl</kbd>/<kbd>C</kbd> Crouch &nbsp;·&nbsp; <kbd>Space</kbd> Jump</li>
-      <li><kbd>B</kbd> Buy menu &nbsp;·&nbsp; <kbd>E</kbd> Plant / defuse &nbsp;·&nbsp; <kbd>1</kbd>–<kbd>3</kbd> Weapons &nbsp;·&nbsp; <kbd>4</kbd>/<kbd>5</kbd>/<kbd>6</kbd> Grenades &nbsp;·&nbsp; <kbd>G</kbd> Throw</li>
+      <li><kbd>R</kbd> Reload &nbsp;·&nbsp; <kbd>R-Click</kbd> Aim &nbsp;·&nbsp; <kbd>Shift</kbd> Walk &nbsp;·&nbsp; <kbd>Ctrl</kbd>/<kbd>C</kbd> Crouch</li>
+      <li><kbd>Space</kbd> Jump &nbsp;·&nbsp; <kbd>B</kbd> Buy &nbsp;·&nbsp; <kbd>E</kbd> Plant &nbsp;·&nbsp; <kbd>1</kbd>–<kbd>3</kbd> Weapons &nbsp;·&nbsp; <kbd>4</kbd>/<kbd>5</kbd>/<kbd>6</kbd> Grenades &nbsp;·&nbsp; <kbd>G</kbd> Throw</li>
     </ul>
   </section>
 </div>
