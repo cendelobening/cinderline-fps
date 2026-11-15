@@ -773,7 +773,7 @@ function runShot(name) {
     defs[1].position.set(14, 0, -12);
     defs[2].position.set(16, 0, 2);
     const atks = bots.bots.filter((b) => b.team === 'atk');
-    atks[0].position.set(-2, 0, 3);
+    atks[0].position.set(-7, 0, 11); // Vanguard behind-left, clear of the camera lane.
     atks[0].yaw = -Math.PI / 2;
     defs[0].yaw = Math.PI / 2;
     defs[1].yaw = Math.PI / 2;
@@ -785,7 +785,7 @@ function runShot(name) {
     settle(4);
     aimAt(new THREE.Vector3(defs[1].position.x, 1.2, defs[1].position.z));
     shootPlayer();
-    settle(2);
+    settle(4); // Let the 60 ms muzzle flash decay so the frame reads clean; tracer + hitmarker stay.
   } else if (name === 'end') {
     rounds.state.phase = 'roundEnd';
     rounds.state.phaseTime = 1;
